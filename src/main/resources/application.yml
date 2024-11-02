@@ -1,0 +1,7 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: CursoArquitecturaHexagonal-Authentication
+client-app:
+  url: ${CLIENT_URL:http://localhost:8090}
