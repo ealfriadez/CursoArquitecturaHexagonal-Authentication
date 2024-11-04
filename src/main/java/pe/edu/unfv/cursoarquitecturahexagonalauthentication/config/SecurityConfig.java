@@ -86,7 +86,7 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails userDetails = User.withDefaultPasswordEncoder()
+        UserDetails userDetails = User.builder()
                 .username("user")
                 .password("{noop}password")
                 .roles("USER")
@@ -104,8 +104,7 @@ public class SecurityConfig {
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
                 .redirectUri(clientUrl.concat("/login/oauth2/code/CursoArquitecturaHexagonal-Gateway"))
-                .redirectUri(clientUrl.concat("/login/authorized"))
-                .postLogoutRedirectUri("http://127.0.0.1:8080/")
+                .redirectUri(clientUrl.concat("/authorized"))
                 .scope(OidcScopes.OPENID)
                 .scope(OidcScopes.PROFILE)
                 .scope("read")
